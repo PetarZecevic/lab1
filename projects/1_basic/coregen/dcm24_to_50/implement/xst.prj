@@ -1,0 +1,2 @@
+vhdl work ../../dcm24_to_50.vhd
+vhdl work ../example_design/dcm24_to_50_exdes.vhd

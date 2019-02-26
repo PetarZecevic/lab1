@@ -26,9 +26,9 @@ END clk_gen;
 ARCHITECTURE rtl OF clk_gen IS
 -- instanciranje komponenti
 -------------------------------------------------------------------
--- dcm27_to_50
+-- dcm24_to_50
 -------------------------------------------------------------------
-COMPONENT dcm27_to_50 is
+COMPONENT dcm24_to_50 is
 port
  (-- Clock in ports
   CLK_IN1           : in     std_logic;
@@ -74,7 +74,7 @@ SIGNAL dff_out_r     : STD_LOGIC;
 BEGIN
 
 -- povezivanje komponenti
-DMC: dcm27_to_50 PORT MAP (
+DMC: dcm24_to_50 PORT MAP (
                 CLK_IN1  => clkin_i,
                 CLK_OUT1 => clk_div_s,
                 RESET    => rst_i,

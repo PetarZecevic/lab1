@@ -16,8 +16,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY clk_counter IS GENERIC(
                               -- maksimalna vrednost broja do kojeg brojac broji
-                              --max_cnt : STD_LOGIC_VECTOR(25 DOWNTO 0) := "10111110101111000010000000" -- 50 000 000
-										  max_cnt : STD_LOGIC_VECTOR(2 DOWNTO 0) := "101" -- 5
+                              max_cnt : STD_LOGIC_VECTOR(25 DOWNTO 0) := "10111110101111000010000000" -- 50 000 000
 									  );
                       PORT   (
                                clk_i     : IN  STD_LOGIC; -- ulazni takt
@@ -43,11 +42,8 @@ ARCHITECTURE rtl OF clk_counter IS
 		);
 	end component reg;
 
-	--SIGNAL	counter_r : STD_LOGIC_VECTOR(25 DOWNTO 0);
-	--signal	next_counter_r : std_logic_vector(25 downto 0);
-	
-	SIGNAL	counter_r : STD_LOGIC_VECTOR(2 DOWNTO 0);
-	signal	next_counter_r : std_logic_vector(2 downto 0);
+	SIGNAL	counter_r : STD_LOGIC_VECTOR(25 DOWNTO 0);
+	signal	next_counter_r : std_logic_vector(25 downto 0);
 	signal	max_ind	: std_logic;
 	
 BEGIN
@@ -57,7 +53,7 @@ BEGIN
 -- predstavlja jednu proteklu sekundu, brojac se nulira nakon toga
 	reg_counter : reg
 		generic map(
-			WIDTH => 3,
+			WIDTH => 26,
 			RST_INIT => 0
 		)
 		port map(
@@ -70,7 +66,7 @@ BEGIN
 	max_ind <= '0' when counter_r /= max_cnt else
 				  '1';
 	
-	next_counter_r <= conv_std_logic_vector(0, 3) when max_ind = '1' or cnt_rst_i = '1' else
+	next_counter_r <= conv_std_logic_vector(0, 26) when max_ind = '1' or cnt_rst_i = '1' else
 						 counter_r + 1 when cnt_en_i = '1' else
 						 counter_r;
 	

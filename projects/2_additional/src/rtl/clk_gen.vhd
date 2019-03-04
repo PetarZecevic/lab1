@@ -18,7 +18,7 @@ ENTITY clk_gen IS PORT (
                         clkin_i       : IN    STD_LOGIC;  -- ulazni takt koji dolazi od ploce (24MHz)
                         rst_i         : IN    STD_LOGIC;  -- reset aktivan na visokom nivou
                         clk_50MHz_o   : OUT   STD_LOGIC;  -- izlazni takt od  2MHz
-                        clk_27MHz_o   : OUT   STD_LOGIC;  -- izlazni takt od 24MHz
+                        clk_24MHz_o   : OUT   STD_LOGIC;  -- izlazni takt od 24MHz
                         reset_o       : OUT   STD_LOGIC   -- izlazni reset signal, koji je ustvari zakasnjen invertovan locked signal iz dcm-a,
                        );
 END clk_gen;
@@ -28,7 +28,7 @@ ARCHITECTURE rtl OF clk_gen IS
 -------------------------------------------------------------------
 -- dcm27_to_50
 -------------------------------------------------------------------
-COMPONENT dcm27_to_50 is
+COMPONENT dcm24_to_50 is
 port
  (-- Clock in ports
   CLK_IN1           : in     std_logic;
@@ -74,7 +74,7 @@ SIGNAL dff_out_r     : STD_LOGIC;
 BEGIN
 
 -- povezivanje komponenti
-DMC: dcm27_to_50 PORT MAP (
+DMC: dcm24_to_50 PORT MAP (
                 CLK_IN1  => clkin_i,
                 CLK_OUT1 => clk_div_s,
                 RESET    => rst_i,

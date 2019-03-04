@@ -46,10 +46,15 @@ ARCHITECTURE rtl OF timer_counter IS
 	
 SIGNAL counter_value_s   : STD_LOGIC_VECTOR(7 DOWNTO 0);
 signal next_counter_value_s : std_logic_vector(7 downto 0);
+
 SIGNAL counter_for_min_s : STD_LOGIC_VECTOR(7 DOWNTO 0);
 SIGNAL next_counter_for_min_s : STD_LOGIC_VECTOR(7 DOWNTO 0);
+
 SIGNAL counter_for_h_s   : STD_LOGIC_VECTOR(7 DOWNTO 0);
 SIGNAL next_counter_for_h_s   : STD_LOGIC_VECTOR(7 DOWNTO 0);
+
+signal s_cmp : std_logic;
+signal min_cmp : std_logic;
 constant min_const : std_logic_vector(7 downto 0) := "00111100";
 
 begin
@@ -94,21 +99,32 @@ begin
 			o_q => counter_for_h_s
 		);
 		
+	s_cmp <= '1' when counter_value_s = min_const else
+				'0';
 	
-	next_counter_value_s <= conv_std_logic_vector(0, 8) when cnt_rst_i = '1' or counter_value_s = min_const else
+	next_counter_value_s <= conv_std_logic_vector(0, 8) when cnt_rst_i = '1' or s_cmp= '1' else
 									counter_value_s + one_sec_i when cnt_en_i = '1' else
 									counter_value_s;
+									
 	
-	next_counter_for_min_s <= counter_for_min_s + 1 when counter_value_s = min_const else
-									  counter_for_min_s;
+	min_cmp<= '1' when counter_for_min_s = min_const else
+				'0';
+				
+				
+	next_counter_for_min_s <= 	conv_std_logic_vector(0,8) when min_cmp='1' else
+										counter_for_min_s + 1 when s_cmp='1'   else
+									   counter_for_min_s;
+										
+										
 	
-	next_counter_for_h_s <= counter_for_h_s + 1 when counter_for_min_s = min_const else
+	next_counter_for_h_s <= counter_for_h_s + 1 when min_cmp='1' else
 									counter_for_h_s;
+									
 									  
-	led_o(7 downto 6) <= counter_for_h_s(1 downto 0) when button_hour_i = '1' else
+	led_o(7 downto 6) <= counter_for_h_s(1 downto 0) when button_hour_i = '0' else
 								"00";
 								
-	led_o(5 downto 0) <= counter_for_min_s(5 downto 0) when button_min_i = '1' else
+	led_o(5 downto 0) <= counter_for_min_s(5 downto 0) when button_min_i = '0' else
 								"000000";
 	
 END rtl;

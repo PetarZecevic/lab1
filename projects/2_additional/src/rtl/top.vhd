@@ -35,7 +35,7 @@ COMPONENT clk_gen IS PORT (
                            clkin_i       : IN  STD_LOGIC;
                            rst_i         : IN  STD_LOGIC;
                            clk_50MHz_o   : OUT STD_LOGIC;
-                           clk_27MHz_o   : OUT STD_LOGIC;
+                           clk_24MHz_o   : OUT STD_LOGIC;
                            reset_o       : OUT STD_LOGIC
                           );
 END COMPONENT clk_gen;
@@ -103,7 +103,7 @@ END COMPONENT debouncer;
 
 -- signali za povezivanje komponenti
 SIGNAL clk_50MHz_s        : STD_LOGIC;
-SIGNAL clk_27MHz_s       : STD_LOGIC;
+SIGNAL clk_24MHz_s       : STD_LOGIC;
 SIGNAL clk_100Hz_s       : STD_LOGIC;
 SIGNAL rst_locked_s      : STD_LOGIC;
 SIGNAL one_sec_s         : STD_LOGIC;
@@ -119,7 +119,7 @@ clk_gen_i:clk_gen             PORT MAP(
                                        clkin_i     => i_clk        ,
                                        rst_i       => not in_rst  ,
                                        clk_50MHz_o => clk_50MHz_s     ,
-                                       clk_27MHz_o => clk_27MHz_s     ,
+                                       clk_24MHz_o => clk_24MHz_s     ,
                                        reset_o     => rst_locked_s
                                       );
 

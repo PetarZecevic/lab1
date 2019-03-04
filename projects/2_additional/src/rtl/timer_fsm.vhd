@@ -30,7 +30,7 @@ ARCHITECTURE rtl OF timer_fsm IS
 
 TYPE   STATE_TYPE IS (IDLE, COUNT, STOP); -- stanja automata
 
-SIGNAL curent_state_r, next_state : STATE_TYPE; -- trenutno i naredno stanje automata
+SIGNAL current_state, next_state : STATE_TYPE; -- trenutno i naredno stanje automata
 
 BEGIN
 

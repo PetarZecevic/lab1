@@ -52,14 +52,14 @@ set work work
 vlib work
 
 # compile all of the files
-vcom -work work ../../../dcm24_to_50.vhd
-vcom -work work ../../example_design/dcm24_to_50_exdes.vhd
-vcom -work work ../dcm24_to_50_tb.vhd
+vlog -work work $env(XILINX)/verilog/src/glbl.v
+vlog -work work ../../../dcm24_to_50.v
+vlog -work work ../../example_design/dcm24_to_50_exdes.v
+vlog -work work ../dcm24_to_50_tb.v
 
 # run the simulation
-vsim  -t ps -voptargs="+acc" -L unisim work.dcm24_to_50_tb 
+vsim  -t ps -voptargs="+acc" -L unisims_ver work.dcm24_to_50_tb work.glbl
 do wave.do
-when {end_of_sim} {echo "End of Simulation"; stop} 
 log dcm24_to_50_tb/dut/counter
 log -r /*
 run 50000ns

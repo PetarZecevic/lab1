@@ -58,7 +58,7 @@ BEGIN
 		)
 		port map(
 			i_clk => clk_i,
-			in_rst => rst_i,
+			in_rst => not rst_i,
 			i_d => next_counter_r,
 			o_q => counter_r
 		);

@@ -52,12 +52,13 @@
 mkdir work
 
 # compile all of the files
-ncvhdl -v93 -work work ../../implement/results/routed.vhd
-ncvhdl -v93 -work work dcm24_to_50_tb.vhd
+ncvlog -work work ${XILINX}/verilog/src/glbl.v
+ncvlog -work work ../../implement/results/routed.v
+ncvlog -work work dcm24_to_50_tb.v
 
 # elaborate and run the simulation
 ncsdfc ../../implement/results/routed.sdf
 
-ncelab -work work -access +wc -pulse_r 10 -nonotifier work.dcm24_to_50_tb -sdf_cmd_file sdf_cmd_file
+ncelab -work work -access +wc -pulse_r 10 -nonotifier work.dcm24_to_50_tb work.glbl -sdf_cmd_file sdf_cmd_file
 ncsim -input  "@database -open -shm nc; probe -create -database nc -all -depth all; run 50000ns; exit" work.dcm24_to_50_tb
 

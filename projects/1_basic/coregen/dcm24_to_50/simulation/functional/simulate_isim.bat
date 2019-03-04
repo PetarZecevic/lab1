@@ -47,12 +47,13 @@ REM  THIS COPYRIGHT NOTICE AND DISCLAIMER MUST BE RETAINED AS
 REM  PART OF THIS FILE AT ALL TIMES.
 REM  
 
-vhpcomp -work work ..\..\..\dcm24_to_50.vhd
-vhpcomp -work work ..\..\example_design\dcm24_to_50_exdes.vhd
-vhpcomp -work work ..\dcm24_to_50_tb.vhd
+vlogcomp -work work %XILINX%\verilog\src\glbl.v
+vlogcomp -work work ..\..\..\dcm24_to_50.v
+vlogcomp -work work ..\..\example_design\dcm24_to_50_exdes.v
+vlogcomp -work work ..\dcm24_to_50_tb.v
 
 REM compile the project
-fuse work.dcm24_to_50_tb  -L unisim -o dcm24_to_50_isim.exe
+fuse work.dcm24_to_50_tb work.glbl -L unisims_ver -o dcm24_to_50_isim.exe
 
 REM run the simulation script
 .\dcm24_to_50_isim.exe -gui -tclbatch simcmds.tcl

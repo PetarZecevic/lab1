@@ -1,7 +1,7 @@
 ##############################################################
 #
-# Xilinx Core Generator version 14.5
-# Date: Tue Feb 26 18:04:40 2019
+# Xilinx Core Generator version 14.6
+# Date: Thu Feb 28 10:02:56 2019
 #
 ##############################################################
 #
@@ -21,7 +21,7 @@ SET addpads = false
 SET asysymbol = true
 SET busformat = BusFormatAngleBracketNotRipped
 SET createndf = true
-SET designentry = VHDL
+SET designentry = Verilog
 SET device = xc6slx45
 SET devicefamily = spartan6
 SET flowvendor = Other
@@ -32,8 +32,8 @@ SET package = fgg676
 SET removerpms = false
 SET simulationfiles = Behavioral
 SET speedgrade = -2
-SET verilogsim = false
-SET vhdlsim = true
+SET verilogsim = true
+SET vhdlsim = false
 # END Project Options
 # BEGIN Select
 SELECT Clocking_Wizard xilinx.com:ip:clk_wiz:3.6
@@ -266,4 +266,4 @@ CSET use_status=false
 MISC pkg_timestamp=2012-05-10T12:44:55Z
 # END Extra information
 GENERATE
-# CRC: f4979c48
+# CRC:  8e600de

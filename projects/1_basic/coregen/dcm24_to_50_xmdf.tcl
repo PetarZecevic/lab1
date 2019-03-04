@@ -40,20 +40,12 @@ utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type Ignore
 incr fcount
 
-utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/example_design/dcm24_to_50_exdes.ucf
-utilities_xmdf::xmdfSetData $instance FileSet $fcount type ucf
-incr fcount
-
 utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/doc/clk_wiz_ds709.pdf
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type Ignore
 incr fcount
 
 utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/doc/clk_wiz_gsg521.pdf
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type Ignore
-incr fcount
-
-utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/example_design/dcm24_to_50_exdes.vhd
-utilities_xmdf::xmdfSetData $instance FileSet $fcount type vhdl
 incr fcount
 
 utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/implement/implement.bat
@@ -72,7 +64,7 @@ utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type Ignore
 incr fcount
 
-utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/simulation/dcm24_to_50_tb.vhd
+utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/simulation/dcm24_to_50_tb.v
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type Ignore
 incr fcount
 
@@ -92,6 +84,18 @@ utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type Ignore
 incr fcount
 
+utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/simulation/functional/simulate_vcs.sh
+utilities_xmdf::xmdfSetData $instance FileSet $fcount type Ignore
+incr fcount
+
+utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/simulation/functional/ucli_commands.key
+utilities_xmdf::xmdfSetData $instance FileSet $fcount type Ignore
+incr fcount
+
+utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/simulation/functional/vcs_session.tcl
+utilities_xmdf::xmdfSetData $instance FileSet $fcount type Ignore
+incr fcount
+
 utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50/simulation/functional/wave.do
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type Ignore
 incr fcount
@@ -108,12 +112,16 @@ utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50.
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type AnyView
 incr fcount
 
-utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50.vhd
-utilities_xmdf::xmdfSetData $instance FileSet $fcount type vhdl
+utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50.ucf
+utilities_xmdf::xmdfSetData $instance FileSet $fcount type ucf
 incr fcount
 
-utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50.vho
-utilities_xmdf::xmdfSetData $instance FileSet $fcount type vhdl_template
+utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50.v
+utilities_xmdf::xmdfSetData $instance FileSet $fcount type verilog
+incr fcount
+
+utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50.veo
+utilities_xmdf::xmdfSetData $instance FileSet $fcount type verilog_template
 incr fcount
 
 utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path dcm24_to_50.xco

@@ -53,8 +53,9 @@ set work work
 vlib work
 
 # compile all of the files
-vcom -work work ../../implement/results/routed.vhd
-vcom -work work dcm24_to_50_tb.vhd
+vlog -work work $XILINX/verilog/src/glbl.v
+vlog -work work ../../implement/results/routed.v
+vlog -work work dcm24_to_50_tb.v
 
 # run the simulation
-vsim -c -t ps +transport_int_delays -voptargs="+acc" -L secureip -L simprim -sdfmax dcm24_to_50_tb/dut=../../implement/results/routed.sdf +no_notifier work.dcm24_to_50_tb 
+vsim -c -t ps +transport_int_delays -voptargs="+acc" -L secureip -L simprims_ver -sdfmax dcm24_to_50_tb/dut=../../implement/results/routed.sdf +no_notifier work.dcm24_to_50_tb work.glbl

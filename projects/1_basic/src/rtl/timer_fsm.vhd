@@ -37,7 +37,7 @@ BEGIN
 -- DODATI :
 -- automat sa konacnim brojem stanja koji upravlja brojanjem sekundi na osnovu stanja prekidaca
 
--- sekvencijalni deo
+---- sekvencijalni deo
 process(clk_i, rst_i)
 begin
 	if rst_i = '1' then
@@ -47,7 +47,7 @@ begin
 	end if;
 end process;
 
--- kombinacioni deo
+------ kombinacioni deo
 process(current_state, reset_switch_i, start_switch_i, continue_switch_i, stop_switch_i)
 begin
 	case current_state is

@@ -48,11 +48,12 @@
 # 
 
 # create the project
-vhpcomp -work work ../../implement/results/routed.vhd
-vhpcomp -work work dcm24_to_50_tb.vhd
+vlogcomp -work work ${XILINX}/verilog/src/glbl.v
+vlogcomp -work work ../../implement/results/routed.v
+vlogcomp -work work dcm24_to_50_tb.v
 
 # compile the project
-fuse work.dcm24_to_50_tb  -L secureip -L simprim -o dcm24_to_50_isim.exe
+fuse work.dcm24_to_50_tb work.glbl -L secureip -L simprims_ver -o dcm24_to_50_isim.exe
 
 # run the simulation script
 ./dcm24_to_50_isim.exe -tclbatch simcmds.tcl -sdfmax /dcm24_to_50_tb/dut=../../implement/results/routed.sdf
